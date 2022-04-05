@@ -114,6 +114,7 @@ const WeatherPage = () => {
     dispatch(removeCity(city));
     if (city === selectedCity)
     {
+      setSelectedCity(null);
       dispatch(getMyCoords());
     }
   };
