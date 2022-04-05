@@ -81,12 +81,14 @@ const WeatherPage = () => {
     if (!weatherState.cities) {
       dispatch(getCities());
     }
-    if (!weatherState.myCoords) {
-      dispatch(getMyCoords());
-    }
+
   }, []);
 
   useEffect(() => {
+    if (!weatherState.myCoords) {
+      dispatch(getMyCoords());
+    }
+
     if (weatherState.myCoords) {
       dispatch(
         getWeatherByCoords({
@@ -110,6 +112,10 @@ const WeatherPage = () => {
 
   const onRemoveCity = (city) => {
     dispatch(removeCity(city));
+    if (city === selectedCity)
+    {
+      dispatch(getMyCoords());
+    }
   };
 
   return (
