@@ -177,7 +177,7 @@ export const getCities = createAsyncThunk(
   async (city, { dispatch }) => {
     try {
       dispatch(setError(null));
-      dispatch(setCities(globalUtils.getLocalData(constants.KEY_CITIES)));
+      dispatch(setCities(globalUtils.getLocalData(constants.KEY_CITIES) ?? []));
     } catch (e) {
       console.log(e);
       dispatch(setError("Internal Error"));
